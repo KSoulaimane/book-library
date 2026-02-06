@@ -1,0 +1,27 @@
+<mat-checkbox [(ngModel)]="afficherDisponibles">
+    Afficher seulement les livres disponibles
+</mat-checkbox>
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>Ma Bibliothèque</span>
+      <span class="spacer"></span>
+      <button mat-raised-button color="accent">Ajouter livre</button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  
+<div>
+    <ng-container *ngFor="let book of books">
+        <mat-card class="book-card" *ngIf="!afficherDisponibles || book.disponible">
+            <mat-card-title>{{ book.titre }}</mat-card-title>
+            <mat-card-content>
+                <p>Auteur: {{ book.auteur }}</p>
+                <p>Categorie: {{ book.categorie }}</p>
+                <p>Annee: {{ book.annee }}</p>
+                <p>Status: {{ book.disponible ? 'Disponible' : 'Emprunté'}}</p>
+            </mat-card-content>
+            <button mat-icon-button color="warn" (click)="supprimerLivre(book.id)">
+                <mat-icon>delete</mat-icon>
+            </button> 
+        </mat-card>
+    </ng-container>
+</div>
