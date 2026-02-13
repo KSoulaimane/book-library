@@ -11,17 +11,11 @@
   
 <div>
     <ng-container *ngFor="let book of books">
-        <mat-card class="book-card" *ngIf="!afficherDisponibles || book.disponible">
-            <mat-card-title>{{ book.titre }}</mat-card-title>
-            <mat-card-content>
-                <p>Auteur: {{ book.auteur }}</p>
-                <p>Categorie: {{ book.categorie }}</p>
-                <p>Annee: {{ book.annee }}</p>
-                <p>Status: {{ book.disponible ? 'Disponible' : 'Emprunté'}}</p>
-            </mat-card-content>
-            <button mat-icon-button color="warn" (click)="supprimerLivre(book.id)">
-                <mat-icon>delete</mat-icon>
-            </button> 
-        </mat-card>
-    </ng-container>
+        <app-book-item
+          *ngIf="!afficherDisponibles || book.disponible"
+          [book]="book"
+          (deleteBook)="supprimerLivre($event)"
+          >
+        </app-book-item>
+    </ng-container>      
 </div>

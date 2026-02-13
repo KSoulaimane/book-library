@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { BookItemComponent } from '../book-item/book-item.component';
 
 @Component({
   selector: 'app-book-list',
@@ -20,6 +21,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatIconModule,
     MatCheckboxModule,
     MatToolbarModule,
+    BookItemComponent
   ],
   templateUrl: './book-list.component.html',
   styleUrls: ['./book-list.component.css']
