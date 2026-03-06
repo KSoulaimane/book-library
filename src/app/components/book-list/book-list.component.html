@@ -3,13 +3,15 @@
 </mat-checkbox>
 <mat-toolbar color="primary">
     <mat-toolbar-row>
-      <span>Ma Bibliothèque</span>
+      <span>Ma Bibliothèque - Nombre total de livres : {{ books.length }}</span>
       <span class="spacer"></span>
       <button mat-raised-button color="accent" (click)="ouvrirForm()">Ajouter livre</button>
     </mat-toolbar-row>
   </mat-toolbar>
   
 <div>
+    <p *ngIf="books.length === 0">Aucun livre dans la bibliothèque</p>
+
     <ng-container *ngFor="let book of books">
         <app-book-item
           *ngIf="!afficherDisponibles || book.disponible"
