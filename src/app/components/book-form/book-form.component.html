@@ -1,0 +1,28 @@
+<form (ngSubmit)="submitForm()">
+    <mat-form-field appearance="fill">
+      <mat-label>Titre</mat-label>
+      <input matInput [(ngModel)]="titre" name="titre" required>
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Auteur</mat-label>
+      <input matInput [(ngModel)]="auteur" name="auteur">
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Catégorie</mat-label>
+      <input matInput [(ngModel)]="categorie" name="categorie">
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Année</mat-label>
+      <input matInput type="number" [(ngModel)]="annee" name="annee">
+    </mat-form-field>
+  
+    <mat-checkbox [(ngModel)]="disponible" name="disponible">
+      Disponible
+    </mat-checkbox>
+  
+    <button mat-raised-button color="primary" type="submit">Ajouter</button>
+  </form>
+  

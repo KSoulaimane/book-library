@@ -6,9 +6,11 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { BrowserModule } from '@angular/platform-browser';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BookItemComponent } from '../book-item/book-item.component';
+import { BookFormComponent } from '../book-form/book-form.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-book-list',
@@ -21,7 +23,8 @@ import { BookItemComponent } from '../book-item/book-item.component';
     MatIconModule,
     MatCheckboxModule,
     MatToolbarModule,
-    BookItemComponent
+    BookItemComponent,
+    MatDialogModule,
   ],
   templateUrl: './book-list.component.html',
   styleUrls: ['./book-list.component.css']
@@ -59,4 +62,20 @@ export class BookListComponent {
   supprimerLivre(id: number){
     this.books = this.books.filter(book => book.id != id);
   }
+  constructor(private dialog: MatDialog) {}
+
+  ouvrirForm() {
+    const dialogRef = this.dialog.open(BookFormComponent, {
+      width: '400px'
+    });
+
+    dialogRef.componentInstance.addBook.subscribe((newBook: Book) => {
+      this.books.push(newBook);
+      dialogRef.close(); // ferme le popup après ajout
+    });
+  }
+  ajouterLivre(newBook: Book) {
+    this.books.push(newBook);
+  }
+  
 }
