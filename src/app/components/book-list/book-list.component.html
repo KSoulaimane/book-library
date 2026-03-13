@@ -3,21 +3,20 @@
 </mat-checkbox>
 <mat-toolbar color="primary">
     <mat-toolbar-row>
-      <span>Ma Bibliothèque - Nombre total de livres : {{ books.length }}</span>
+      <span>Ma Bibliothèque - Nombre total de livres : {{ booksCount$ | async }}</span>
       <span class="spacer"></span>
       <button mat-raised-button color="accent" (click)="ouvrirForm()">Ajouter livre</button>
     </mat-toolbar-row>
   </mat-toolbar>
   
-<div>
-    <p *ngIf="books.length === 0">Aucun livre dans la bibliothèque</p>
+<div class="book-list">
+  <p *ngIf="(books$ | async)?.length === 0">Aucun livre dans la bibliothèque</p>
 
-    <ng-container *ngFor="let book of books">
-        <app-book-item
-          *ngIf="!afficherDisponibles || book.disponible"
-          [book]="book"
-          (deleteBook)="supprimerLivre($event)"
-          >
-        </app-book-item>
-    </ng-container>      
+  <ng-container *ngFor="let book of (afficherDisponibles ? availableBooks$ : books$) | async">
+    <app-book-item
+      [book]="book"
+      (deleteBook)="onDeleteBook($event)"
+      (editBook)="ouvrirFormModification($event)">
+    </app-book-item>
+  </ng-container> 
 </div>

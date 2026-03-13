@@ -21,10 +21,16 @@ import { Book } from '../../models/book';
 })
 export class BookItemComponent {
   @Input() book!: Book;
-
   @Output() deleteBook = new EventEmitter<number>();
+  @Output() editBook = new EventEmitter<Book>();
+ 
+  constructor() { }
 
   onDelete() {
     this.deleteBook.emit(this.book.id);
+  }
+  
+  onEdit() {
+    this.editBook.emit(this.book);
   }
 }

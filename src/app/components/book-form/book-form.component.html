@@ -24,9 +24,7 @@
     Disponible
   </mat-checkbox>
 
-  <button mat-raised-button color="primary" type="submit" 
-          [disabled]="bookForm.invalid">
-    Ajouter
+  <button mat-raised-button color="primary" type="submit" [disabled]="bookForm.invalid">
+    {{ bookToEdit ? 'Modifier' : 'Ajouter' }}
   </button>
-
 </form>

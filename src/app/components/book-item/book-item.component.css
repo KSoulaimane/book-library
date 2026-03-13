@@ -1,0 +1,10 @@
+.book-card {
+    width: 100%; /* La carte occupe toute la largeur de son conteneur */
+    box-sizing: border-box; /* Inclut les marges et bordures dans la largeur */
+    margin: 10px; /* Ajoute un espacement autour de chaque carte */
+    padding: 15px; /* Ajoute un espacement interne pour le contenu */
+    border: 1px solid #ccc; /* Ajoute une bordure légère pour délimiter les cartes */
+    border-radius: 8px; /* Ajoute des coins arrondis */
+    background-color: #dcdcdc; /* Fond blanc pour les cartes */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ajoute une ombre légère */
+}

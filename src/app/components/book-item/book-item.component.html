@@ -1,12 +1,19 @@
-<mat-card class="book-card">
+<mat-card class="book-card" >
     <mat-card-title>{{ book.titre }}</mat-card-title>
     <mat-card-content>
         <p>Auteur: {{ book.auteur }}</p>
         <p>Categorie: {{ book.categorie }}</p>
         <p>Annee: {{ book.annee }}</p>
-        <p>Status: {{ book.disponible ? 'Disponible' : 'Emprunté'}}</p>
+        <p>Status: 
+            <span [style.color]="book.disponible ? 'green' : 'red'">
+                {{ book.disponible ? 'Disponible' : 'Emprunté'}}
+            </span>
+        </p>
     </mat-card-content>
     <button mat-icon-button color="warn" (click)="onDelete()">
         <mat-icon>delete</mat-icon>
     </button>
+    <button mat-icon-button color="primary" (click)="onEdit()">
+        <mat-icon>edit</mat-icon>
+      </button>
 </mat-card>
